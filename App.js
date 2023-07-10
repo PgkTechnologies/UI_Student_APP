@@ -1,20 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View, Switch } from "react-native";
+import { useColorScheme } from "nativewind";
 
 export default function App() {
+  const { colorScheme, toggleColorScheme } = useColorScheme();
   return (
-    <View style={styles.container}>
-      <Text>Welcome to Student APP</Text>
+    <View className="flex-1 items-center justify-center bg-red text-red-400 dark:bg-slate-700 dark:text-white">
+      <Switch value={colorScheme === "dark"} onChange={toggleColorScheme} />
+      <Text className={"dark:text-white"}>Welcome to Student APP</Text>
       <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
