@@ -26,8 +26,9 @@ export const actionLoginRequest = (model) => async (dispatch) => {
         payload: res.data,
       });
       await AsyncStorage.setItem("token", res.data.token);
+      console.log(res.data, "RESP");
     }
   } catch (error) {
-    console.log(error, "HI");
+    console.log(error, "ERR");
   }
 };
