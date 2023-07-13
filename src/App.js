@@ -6,15 +6,22 @@ import { registerRootComponent } from "expo";
 import { AuthProvider } from "./utils/Auth";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "./assets/css/style";
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./store/reducers";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
 
+const store = createStore(rootReducer, applyMiddleware(thunk));
 function App() {
   return (
     <NavigationContainer>
-      <AuthProvider>
-        <SafeAreaView style={Styles.safeArea}>
-          <StackNav />
-        </SafeAreaView>
-      </AuthProvider>
+      <Provider store={store}>
+        <AuthProvider>
+          <SafeAreaView style={Styles.safeArea}>
+            <StackNav />
+          </SafeAreaView>
+        </AuthProvider>
+      </Provider>
     </NavigationContainer>
   );
 }
