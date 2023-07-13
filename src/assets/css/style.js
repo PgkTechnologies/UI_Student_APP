@@ -17,4 +17,12 @@ export const Styles = StyleSheet.create({
   darkText: {
     color: "#444444",
   },
+  loginBtn: {
+    color: "#FFFFFF",
+    backgroundColor: "#009973",
+  },
+  loginImg: {
+    height: 200,
+    width: 300
+  }
 });
