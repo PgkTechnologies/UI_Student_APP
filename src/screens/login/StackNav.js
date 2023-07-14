@@ -8,6 +8,7 @@ import useAuth from "../../utils/Auth";
 import Dashboard from "../Dashboard/Dashboard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useSelector } from "react-redux";
+import Registration from "./Registration";
 
 const Stack = createNativeStackNavigator();
 const StackNav = () => {
@@ -32,6 +33,7 @@ const StackNav = () => {
         <>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Registration" component={Registration} />
         </>
       ) : (
         <Stack.Screen name="Dashboard" component={Dashboard} />
