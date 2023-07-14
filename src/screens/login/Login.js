@@ -39,6 +39,10 @@ export default function Login({ route, navigation }) {
     dispatch(actionLoginRequest(model));
   };
 
+  const onRegister = () => {
+    navigation.navigate("Registration", { name: "Srini" });
+  };
+
   const forgotPassword = () => {
     console.log("FP");
   };
@@ -77,7 +81,7 @@ export default function Login({ route, navigation }) {
               onChangeText={handleChange("userName")}
               value={values.userName}
               placeholder="Enter Mobile or Email address"
-              c
+
             />
             {errors.userName && touched.userName && (
               <Text>{errors.userName}</Text>
@@ -111,9 +115,11 @@ export default function Login({ route, navigation }) {
 
             <Text className="text-base pb-2 text-center">
               Don't have an account?{" "}
-              <Text className="text-md font-bold text-green-900">
-                Register Now
-              </Text>
+              <TouchableOpacity onPress={onRegister}>
+                <Text className="text-md font-bold text-green-900">
+                  Register Now
+                </Text>
+              </TouchableOpacity>
             </Text>
           </View>
         </View>
