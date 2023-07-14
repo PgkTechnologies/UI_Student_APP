@@ -44,6 +44,10 @@ export default function Login({ route, navigation }) {
     dispatch(actionLoginRequest(model));
   };
 
+  const onRegister = () => {
+    navigation.navigate("Registration", { name: "Srini" });
+  };
+
   const forgotPassword = () => {
     console.log("FP");
   };
@@ -62,7 +66,7 @@ export default function Login({ route, navigation }) {
         errors,
         touched,
       }) => (
-        <ScrollView>
+        <ScrollView style={Styles.flex}>
           <View className="bg-white h-full w-full">
             <Text className="text-3xl font-black pt-2 pb-2 text-center text-blue-800">
               C2Hire.
@@ -114,13 +118,14 @@ export default function Login({ route, navigation }) {
                   Login
                 </Text>
               </TouchableOpacity>
-
-              <Text className="mb-2 text-base pb-2 text-center">
-                Don't have an account?{" "}
-                <Text className="text-md font-bold text-green-900">
-                  Register Now
+              <View className="m-2">
+                <Text className="mb-2 text-base pb-2 text-center">
+                  Don't have an account?{" "}
+                  <Text className="p-3 text-md font-bold text-green-900">
+                    Register Now
+                  </Text>
                 </Text>
-              </Text>
+              </View>
             </View>
           </View>
         </ScrollView>
