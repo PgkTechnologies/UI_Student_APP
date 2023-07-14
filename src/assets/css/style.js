@@ -11,6 +11,9 @@ export const Styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  flex: {
+    flex: 1,
+  },
   whiteText: {
     color: "#FFFFFF",
   },
@@ -23,6 +26,6 @@ export const Styles = StyleSheet.create({
   },
   loginImg: {
     height: 200,
-    width: 300
-  }
+    width: 300,
+  },
 });

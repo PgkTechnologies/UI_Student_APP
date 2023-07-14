@@ -12,7 +12,7 @@ export const actionLoginRequest = (model) => async (dispatch) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "https://devapi.c2hire.com/api/o/login",
+      url: BASE_URL + "/o/login",
       data: formData, //'emphone','pass','submit
       headers: {
         Accept: "application/json, text/plain, /",
@@ -25,9 +25,10 @@ export const actionLoginRequest = (model) => async (dispatch) => {
         type: actionTypes.LOGINREQUEST,
         payload: res.data,
       });
-      await AsyncStorage.setItem("token", res.data.token);
+      AsyncStorage.setItem("token", res.data.token);
+      //console.log(res.data, "RESP");
     }
   } catch (error) {
-    console.log(error, "HI");
+    console.log(error, "ERR");
   }
 };

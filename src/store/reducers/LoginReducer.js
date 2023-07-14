@@ -8,7 +8,6 @@ const INITIAL = {
 };
 
 const LoginReducer = (state = INITIAL, action) => {
-  console.log(action, "Redu");
   switch (action.type) {
     case actionTypes.APISTATUS:
       return { ...state, apiStatus: action.payload };
