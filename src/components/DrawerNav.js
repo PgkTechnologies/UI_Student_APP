@@ -5,13 +5,13 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "../screens/Dashboard/DrawerContent";
 
 const Drawer = createDrawerNavigator();
-export default function DrawerNav() {
+export default function DrawerNav(props) {
   return (
     <>
       <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
         <Drawer.Screen
           name="UserData"
-          component={DrawerScreen}
+          children={() => <DrawerScreen {...props} />}
           options={{ headerShown: false }}
         />
       </Drawer.Navigator>

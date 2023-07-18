@@ -3,10 +3,10 @@ import React from "react";
 import DrawerNav from "../components/DrawerNav";
 import { Styles } from "../assets/css/style";
 
-export default function Container() {
+export default function Container(props) {
   return (
     <View style={Styles.flex}>
-      <DrawerNav />
+      <DrawerNav {...props} />
     </View>
   );
 }
