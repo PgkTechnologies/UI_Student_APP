@@ -1,8 +1,9 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { BASE_URL } from "@env";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: BASE_URL,
 });
 
 //instance.defaults.headers.common['Content-Type'] = "application/json";
@@ -35,10 +36,14 @@ instance.defaults.headers.common["Content-Type"] = "multipart/form-data";
 // );
 
 //Srini Added
+const GetTokenData = async () => {
+  await AsyncStorage.getItem("token");
+};
 
 instance.interceptors.request.use(
   (config) => {
-    const accessToken = AsyncStorage.getItem("token");
+    const accessToken = GetTokenData();
+    console.log(accessToken, "TOKENDATA");
     if (
       accessToken &&
       config.url.includes !==

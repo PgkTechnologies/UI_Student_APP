@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CryptoJS from "crypto-js";
 import { actionLoginRequest } from "../../store/actionTypes/LoginActionTypes";
 
-export default function Login({ route, navigation }) {
+export default function Login({ navigation }) {
   const loginData = useSelector((state) => state.loginReducer.token);
   const dispatch = useDispatch();
   const userSchema = object({
@@ -27,6 +27,9 @@ export default function Login({ route, navigation }) {
       .min(8, `must be at least 8 characters long`),
   });
 
+  const registerPageOpen = () => {
+    navigation.navigate("Registration");
+  };
   const subnitLoginData = (data) => {
     let iv = CryptoJS.enc.Utf8.parse("1234567812345678");
     let key = CryptoJS.enc.Utf8.parse("5v8y/B?E(G+KbPeShVmYq3t6w9z$C&12");
@@ -66,8 +69,8 @@ export default function Login({ route, navigation }) {
         errors,
         touched,
       }) => (
-        <ScrollView style={Styles.flex}>
-          <View className="bg-white h-full w-full">
+        <ScrollView>
+          <View className="bg-white w-full mb-3 h-full">
             <Text className="text-3xl font-black pt-2 pb-2 text-center text-blue-800">
               C2Hire.
             </Text>
@@ -104,13 +107,13 @@ export default function Login({ route, navigation }) {
                 <Text className="m-0 text-red-500">{errors.password}</Text>
               )}
               <Text
-                className="p-2 text-blue-800 text-right mb-6"
+                className="p-2 text-blue-800 text-right mb-4"
                 onPress={forgotPassword}
               >
                 Forgot password?
               </Text>
               <TouchableOpacity
-                className="p-4 mb-6 ml-2 mr-2 rounded"
+                className="p-4 mb-3 ml-2 mr-2 rounded"
                 style={Styles.loginBtn}
                 onPress={handleSubmit}
               >
@@ -118,12 +121,14 @@ export default function Login({ route, navigation }) {
                   Login
                 </Text>
               </TouchableOpacity>
-              <View className="m-2">
+              <View className="pb-5">
                 <Text className="mb-2 text-base pb-2 text-center">
                   Don't have an account?{" "}
-                  <Text className="p-3 text-md font-bold text-green-900">
-                    Register Now
-                  </Text>
+                  <TouchableOpacity onPress={registerPageOpen}>
+                    <Text className="p-3 text-md font-bold text-green-900">
+                      Register Now
+                    </Text>
+                  </TouchableOpacity>
                 </Text>
               </View>
             </View>

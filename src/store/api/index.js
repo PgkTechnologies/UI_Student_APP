@@ -1,13 +1,8 @@
 import Axios from "../../utils/Axios";
-import axios from "axios";
+import { BASE_URL } from "@env";
 
-export const loginRequest = (model) => {
-  const URL = "https://devapi.c2hire.com/api/o/login";
-  let formData = new FormData();
-  formData.append("stakeholder", model.stakeholder);
-  formData.append("userID", model.userID);
-  formData.append("password", model.password);
-  return axios.POST(URL, formData).then((res) => {
-    return res.data;
-  });
+export const StudentRegistrationGetLut = () => {
+  const URL =
+    "/lut/?lutList=stuProgramCatalog&lutList=stuBranchCatalog&lutList=universityCatalog&lutList=programType&lutList=registeredColleges";
+  return Axios.get(URL).then((res) => res.data);
 };

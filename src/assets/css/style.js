@@ -28,4 +28,28 @@ export const Styles = StyleSheet.create({
     height: 200,
     width: 300,
   },
+  selectField: {
+    borderRadius: "5px",
+    borderColor: "none",
+  },
+  calendar: {
+    flex: 1,
+    flexDirection: "row",
+    borderRadius: 5,
+    borderColor: "#999",
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 15,
+    alignItems: "flex-end",
+  },
+  calendatInput: {
+    flex: 1,
+    textAlign: "left",
+  },
+  picker: {
+    borderRadius: 5,
+    borderColor: "#999",
+    borderStyle: "solid",
+    borderWidth: 2,
+  },
 });
