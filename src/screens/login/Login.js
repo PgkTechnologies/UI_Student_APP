@@ -66,7 +66,7 @@ export default function Login({ route, navigation }) {
         errors,
         touched,
       }) => (
-        <ScrollView style={Styles.flex}>
+        <ScrollView className="bg-white" style={Styles.flex}>
           <View className="bg-white h-full w-full">
             <Text className="text-3xl font-black pt-2 pb-2 text-center text-blue-800">
               C2Hire.
@@ -87,7 +87,6 @@ export default function Login({ route, navigation }) {
                 onChangeText={handleChange("userName")}
                 value={values.userName}
                 placeholder="Enter Mobile or Email address"
-                c
               />
               {errors.userName && touched.userName && (
                 <Text className="m-0 text-red-500">{errors.userName}</Text>
