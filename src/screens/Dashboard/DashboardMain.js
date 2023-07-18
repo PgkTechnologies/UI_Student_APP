@@ -11,7 +11,10 @@ export default function DashboardMain(props) {
     <ScrollView>
       <View style={Styles.flex}>
         <Text>Dashboard</Text>
-        <Button title="Open drawer" onPress={() => showDrawer()} />
+        <Button
+          title="Open drawer"
+          onPress={() => props?.navigation?.openDrawer()}
+        />
       </View>
     </ScrollView>
   );

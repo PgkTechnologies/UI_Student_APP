@@ -299,6 +299,7 @@ export default function Registration({ navigation }) {
 
           <Text className="text-base pb-2">Enter Password *</Text>
           <TextInput
+            secureTextEntry={true}
             className="p-3 mb-4 text-base border-solid border-gray-400 border-2 rounded"
             placeholder="Password"
           />
