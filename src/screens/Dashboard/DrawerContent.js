@@ -3,7 +3,7 @@ import React from "react";
 import useAuth from "../../utils/Auth";
 import { useDispatch } from "react-redux";
 import { Styles } from "../../assets/css/style";
-import { Ionincons } from "@expo/vector-icons"
+import { MaterialCommunityIcons, MaterialIcons, FontAwesome5 } from "@expo/vector-icons"
 
 export default function DrawerContent() {
   const dispatch = useDispatch();
@@ -13,38 +13,44 @@ export default function DrawerContent() {
   };
   return (
     <View className="h-full flex">
-      <View className="p-3 pt-5 pb-2 flex-row items-center">
-        <View className="h-10 w-10 rounded-full bg-blue-600 mr-2">
+      <View className="m-4 p-5 flex-row items-center justify-center bg-green-400 rounded">
+        <Text className="text-sm text-green-800 font-black uppercase">Credits Available : 100 </Text>
+      </View>
+      <View className="p-3 flex-row items-center">
+        <View className="h-8 w-8 rounded-full bg-blue-600 mr-4">
         </View>
         <Text className="text-xl font-bold">Sricharan Pisupati </Text>
       </View>
-      <View className="p-4 pt-2 pb-6 flex-row items-center">
-        <Text className="text-md text-gre-800 font-bold">Credits Available : 10 </Text>
-      </View>
-      <View className="p-5 border-y border-slate-400 flex-row items-center">
-        <View className="h-8 w-8 bg-gray-600 mr-5">
+
+      <View className="p-3 pt-5 flex-row items-center">
+        <View className="h-8 w-8 mr-5 flex-row items-center justify-center">
+          <MaterialIcons name="assessment" size={24} color="black" />
         </View>
         <Text className="text-base font-semibold uppercase">Assessments</Text>
       </View>
-      <View className="p-5  flex-row items-center">
-        <View className="h-8 w-8 bg-gray-600 mr-5">
+      <View className="p-3 flex-row items-center">
+        <View className="h-8 w-8 flex-row items-center justify-center mr-5">
+          <FontAwesome5 name="money-check" size={16} color="black" />
         </View>
         <Text className="text-base font-semibold uppercase">Transactions</Text>
       </View>
-      <View className="p-5 border-y border-slate-400 flex-row items-center">
-        <View className="h-8 w-8 bg-gray-600 mr-5">
+      <View className="p-3  flex-row items-center">
+        <View className="h-8 w-8 flex-row items-center justify-center mr-5">
+          <MaterialIcons name="enhanced-encryption" size={24} color="black" />
         </View>
         <Text className="text-base font-semibold uppercase">Blockchain</Text>
       </View>
-      <View className="p-5 flex-row items-center">
-        <View className="h-8 w-8 bg-gray-600 mr-5">
+      <View className="p-3 flex-row items-center">
+        <View className="h-8 w-8 flex-row items-center justify-center mr-5">
+          <MaterialIcons name="contact-support" size={24} color="black" />
         </View>
         <Text className="text-base font-semibold  uppercase">Support</Text>
       </View>
-      <View className="p-5 border-y border-slate-400 flex-row items-center">
-        <View className="h-8 w-8 bg-gray-600 mr-5">
+      <View className="m-6 ml-4 p-3 flex-row items-center rounded bg-blue-950">
+        <View className="h-8 w-8 flex-row items-center justify-center mr-5">
+          <MaterialCommunityIcons name="logout" size={24} color="white" />
         </View>
-        <Text className="text-base font-semibold uppercase">Logout</Text>
+        <Text className="text-white text-base font-semibold uppercase">Logout</Text>
       </View>
     </View>
   );

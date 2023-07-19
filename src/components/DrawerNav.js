@@ -11,7 +11,7 @@ export default function DrawerNav(props) {
       <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
         <Drawer.Screen
           name="UserData"
-          children={() => <DrawerScreen {...props} />}
+          component={DrawerScreen}
           options={{ headerShown: false }}
         />
       </Drawer.Navigator>
