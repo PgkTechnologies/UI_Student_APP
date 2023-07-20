@@ -123,7 +123,7 @@ export default function OnJobs() {
                     </Text>
                 </View>
             </View>
-            <View className="p-3 h-2/6 w-full flex-row items-center justify-center ">
+            <View className="p-3 w-full flex-row items-center justify-center ">
                 <TouchableOpacity
                     className="p-4 mb-6 ml-2 mr-2 rounded w-full"
                     style={Styles.loginBtn}
