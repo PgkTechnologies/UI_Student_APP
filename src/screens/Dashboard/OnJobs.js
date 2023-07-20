@@ -18,7 +18,7 @@ export default function OnJobs() {
                     />
                 </View>
             </TouchableOpacity>
-            <Text className='p-2 pt-0 text-blue-900 font-black text-base'>
+            <Text className='p-2 pt-0 text-blue-950 font-black text-base'>
                 Details
             </Text>
             <View className="p-5 mb-4 flex-row justify-between bg-white rounded-lg">
@@ -29,7 +29,7 @@ export default function OnJobs() {
                     <FontAwesome name="rupee" size={12} color="black" /> 846.61
                 </Text>
             </View>
-            <Text className='p-2 text-blue-900 font-black text-base'>
+            <Text className='p-2 text-blue-950 font-black text-base'>
                 Offers & Benefits
             </Text>
             <View className='p-5 mb-4 bg-white rounded-lg'>
@@ -58,7 +58,7 @@ export default function OnJobs() {
                     </View>
                 </View>
             </View>
-            <Text className='p-2 text-blue-900 font-black text-base'>
+            <Text className='p-2 text-blue-950 font-black text-base'>
                 Subcription Time
             </Text>
             <View className="p-5 mb-4 flex-row justify-between bg-white rounded-lg">
@@ -69,7 +69,7 @@ export default function OnJobs() {
                     1
                 </Text>
             </View>
-            <Text className='p-2 text-blue-900 font-black text-base'>
+            <Text className='p-2 text-blue-950 font-black text-base'>
                 Subcription Time
             </Text>
             <View className='p-5 mb-4 bg-white rounded-lg'>
