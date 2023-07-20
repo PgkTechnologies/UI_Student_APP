@@ -114,7 +114,7 @@ export default function OnJobs() {
                 </View>
                 <View className="mb-4 border-b border-slate-300 bo flex-row items-center justify-between">
                 </View>
-                <View className="mb-5 flex-row items-center justify-between">
+                <View className="flex-row items-center justify-between">
                     <Text className='font-semibold'>
                         Total Amount
                     </Text>
