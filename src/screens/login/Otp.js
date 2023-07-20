@@ -16,7 +16,7 @@ export default function OTP({ navigation }) {
   const [f3, setF3] = useState("");
   const [f4, setF4] = useState("");
 
-  const onVerifyOtp = () => {};
+  const onVerifyOtp = () => { };
 
   return (
     <View className="h-full p-4 bg-white">
@@ -100,17 +100,17 @@ export default function OTP({ navigation }) {
           }}
         />
       </View>
-      <View className="bg-white h-2/6 w-full flex items-center justify-center ">
+      <View className="bg-white h-1/2 w-full flex items-center justify-center ">
         <Image
           style={Styles.loginImg}
           source={require("../../../assets/6310507.jpg")}
         />
       </View>
-      <View className="p-3 h-2/6 w-full flex-row items-center justify-center ">
+      <View className="p-3  w-full flex-row items-center justify-center ">
         <TouchableOpacity
           className="p-4 mb-6 ml-2 mr-2 rounded w-full"
           style={Styles.loginBtn}
-          //onPress={handleSubmit}
+        //onPress={handleSubmit}
         >
           <Text className="text-lg font-bold text-center text-white">
             Submit

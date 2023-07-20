@@ -70,7 +70,7 @@ export default function OnJobs() {
                 </Text>
             </View>
             <Text className='p-2 text-blue-950 font-black text-base'>
-                Subcription Time
+                Bill Details
             </Text>
             <View className='p-5 mb-4 bg-white rounded-lg'>
                 <View className="mb-5 flex-row items-center justify-between">
@@ -84,7 +84,7 @@ export default function OnJobs() {
                 <View className="mb-4 flex-row items-center justify-between">
                     <View>
                         <Text className='font-semibold'>
-                            C2Hire05
+                            Offer Price
                         </Text>
                         <Text className='text-xs text-slate-600'>
                             (C2Hire. + Assessments)
@@ -130,7 +130,7 @@ export default function OnJobs() {
                 //onPress={handleSubmit}
                 >
                     <Text className="text-lg font-bold text-center text-white">
-                        Confirm
+                        Proceed to Pay
                     </Text>
                 </TouchableOpacity>
             </View>

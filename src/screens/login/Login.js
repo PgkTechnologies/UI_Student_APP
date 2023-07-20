@@ -51,30 +51,30 @@ export default function Login({ navigation }) {
     navigation.navigate("Registration", { name: "Srini" });
   };
 
-  const changeText = (val) => {};
+  const changeText = (val) => { };
 
-  const forgotPassword = () => {};
+  const forgotPassword = () => { };
   return (
-    <Formik
-      initialValues={{ userName: "", password: "" }}
-      onSubmit={(values) => submitLoginData(values)}
-      validationSchema={userSchema}
-    >
-      {({
-        handleChange,
-        handleSubmit,
-        handleReset,
-        isValid,
-        values,
-        errors,
-        touched,
-      }) => (
-        <ScrollView>
-          <View className="bg-white w-full mb-3 h-full">
-            <Text className="text-3xl font-black pt-2 pb-2 text-center text-blue-800">
+    <View>
+      <Formik
+        initialValues={{ userName: "", password: "" }}
+        onSubmit={(values) => submitLoginData(values)}
+        validationSchema={userSchema}
+      >
+        {({
+          handleChange,
+          handleSubmit,
+          handleReset,
+          isValid,
+          values,
+          errors,
+          touched,
+        }) => (
+          <ScrollView className="bg-white w-full h-full">
+            <Text className="p-2 text-3xl font-black text-center text-blue-800">
               C2Hire.
             </Text>
-            <View className="bg-white h-1/3 w-full flex items-center justify-center ">
+            <View className="bg-white h-2/6 w-full flex-row items-center justify-center ">
               <Image
                 style={Styles.loginImg}
                 source={require("../../../assets/4565.jpg")}
@@ -123,17 +123,15 @@ export default function Login({ navigation }) {
               <View className="pb-5">
                 <Text className="mb-2 text-base pb-2 text-center">
                   Don't have an account?{" "}
-                  <TouchableOpacity onPress={registerPageOpen}>
-                    <Text className="p-3 text-md font-bold text-green-900">
-                      Register Now
-                    </Text>
-                  </TouchableOpacity>
+                  <Text onPress={registerPageOpen} className="p-3 text-md font-bold text-green-900">
+                    Register Now
+                  </Text>
                 </Text>
               </View>
             </View>
-          </View>
-        </ScrollView>
-      )}
-    </Formik>
+          </ScrollView>
+        )}
+      </Formik>
+    </View>
   );
 }
