@@ -5,7 +5,6 @@ import { Text, ScrollView, View, TouchableOpacity, Button } from "react-native";
 export default function DashboardMain(props) {
   const showDrawer = () => {
     props.navigation.openDrawer();
-    console.log(props, "DASH");
   };
   return (
     <ScrollView>

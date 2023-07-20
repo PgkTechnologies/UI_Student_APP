@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'login-btn': '#243c5a',
+        "login-btn": "#243c5a",
       },
+      opacity: ["disabled"],
     },
   },
   plugins: [],

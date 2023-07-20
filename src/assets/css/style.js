@@ -52,4 +52,19 @@ export const Styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 2,
   },
+  pursuing: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-start",
+    borderRadius: 5,
+    borderColor: "#999",
+    borderStyle: "solid",
+    padding: 15,
+  },
+  inline: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
 });

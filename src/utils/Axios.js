@@ -37,20 +37,23 @@ instance.defaults.headers.common["Content-Type"] = "multipart/form-data";
 
 //Srini Added
 const GetTokenData = async () => {
-  await AsyncStorage.getItem("token");
+  return await AsyncStorage.getItem("token");
 };
 
+console.log(BASE_URL, "AXIOS");
 instance.interceptors.request.use(
   (config) => {
     const accessToken = GetTokenData();
-    console.log(accessToken, "TOKENDATA");
+    console.log(accessToken, "TOLEN");
     if (
       accessToken &&
       config.url.includes !==
         "http://restcountries.eu/rest/v2/all?fields=name;flag;callingCodes"
     ) {
       config.headers.Authorization = "Bearer " + accessToken;
+      console.log("1");
     }
+
     return config;
   },
   (error) => {

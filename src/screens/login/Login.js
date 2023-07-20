@@ -30,7 +30,7 @@ export default function Login({ navigation }) {
   const registerPageOpen = () => {
     navigation.navigate("Registration");
   };
-  const subnitLoginData = (data) => {
+  const submitLoginData = (data) => {
     let iv = CryptoJS.enc.Utf8.parse("1234567812345678");
     let key = CryptoJS.enc.Utf8.parse("5v8y/B?E(G+KbPeShVmYq3t6w9z$C&12");
     let hashedPassword = CryptoJS.AES.encrypt(data.password, key, {
@@ -51,13 +51,13 @@ export default function Login({ navigation }) {
     navigation.navigate("Registration", { name: "Srini" });
   };
 
-  const forgotPassword = () => {
-    console.log("FP");
-  };
+  const changeText = (val) => {};
+
+  const forgotPassword = () => {};
   return (
     <Formik
       initialValues={{ userName: "", password: "" }}
-      onSubmit={(values) => subnitLoginData(values)}
+      onSubmit={(values) => submitLoginData(values)}
       validationSchema={userSchema}
     >
       {({
@@ -90,7 +90,6 @@ export default function Login({ navigation }) {
                 onChangeText={handleChange("userName")}
                 value={values.userName}
                 placeholder="Enter Mobile or Email address"
-                c
               />
               {errors.userName && touched.userName && (
                 <Text className="m-0 text-red-500">{errors.userName}</Text>
