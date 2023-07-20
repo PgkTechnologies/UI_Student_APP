@@ -5,7 +5,7 @@ import { Styles } from "../../assets/css/style";
 
 export default function OnJobs() {
     return (
-        <ScrollView className="p-3">
+        <ScrollView className="p-4">
             <TouchableOpacity
                 className="mb-3"
             //onPress={() => setSearchModal(!searchModal)}
@@ -112,7 +112,7 @@ export default function OnJobs() {
                         <FontAwesome name="rupee" size={12} color="black" /> 144.77
                     </Text>
                 </View>
-                <View className="mb-4 border-b border-slate-500 bo flex-row items-center justify-between">
+                <View className="mb-4 border-b border-slate-300 bo flex-row items-center justify-between">
                 </View>
                 <View className="mb-5 flex-row items-center justify-between">
                     <Text className='font-semibold'>
