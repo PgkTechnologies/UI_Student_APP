@@ -3,8 +3,8 @@ import React from "react";
 
 export default function Profile() {
   return (
-    <View>
-      <Text>Profile</Text>
+    <View className="p-4">
+      <Text className="text-xl font-bold">Profile</Text>
     </View>
   );
 }

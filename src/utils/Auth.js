@@ -11,10 +11,12 @@ export const AuthProvider = ({ children }) => {
   const loginData = useSelector((state) => state.loginReducer.token);
   const [storage, setStorage] = useState(AsyncStorage.getItem("token"));
 
-  const removeToken = async (data) => {
-    setToken(data);
+  const Logout = async () => {
+    const tokenStore = await AsyncStorage.getItem("token");
+    setToken(null);
     await AsyncStorage.removeItem("token");
     dispatch({ type: actionTypes.LOGINREQUEST, payload: null });
+    console.log("LOGOUT");
   };
 
   const getStorage = async () => {
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   }, [loginData, storage]);
 
   return (
-    <AuthContext.Provider value={{ token, removeToken }}>
+    <AuthContext.Provider value={{ token, Logout }}>
       {children}
     </AuthContext.Provider>
   );

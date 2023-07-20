@@ -168,6 +168,7 @@ export default function Registration({ navigation }) {
   };
   const onSuccesssubmitRegForm = (data) => {
     console.log(data, "SUCCESS");
+    navigation.navigate("OTP");
   };
 
   console.log(collName, univName, "NAMES");
