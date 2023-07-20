@@ -5,7 +5,7 @@ import { Styles } from "../../assets/css/style";
 
 export default function OnJobs() {
     return (
-        <ScrollView className="p-4">
+        <ScrollView className="p-3">
             <TouchableOpacity
                 className="mb-3"
             //onPress={() => setSearchModal(!searchModal)}
