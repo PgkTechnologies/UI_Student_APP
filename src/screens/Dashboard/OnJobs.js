@@ -130,7 +130,7 @@ export default function OnJobs() {
                 //onPress={handleSubmit}
                 >
                     <Text className="text-lg font-bold text-center text-white">
-                        Submit
+                        Confirm
                     </Text>
                 </TouchableOpacity>
             </View>
