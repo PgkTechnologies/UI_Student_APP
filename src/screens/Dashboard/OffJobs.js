@@ -21,7 +21,7 @@ export default function OffJobs() {
                     Enter OTP
                 </Text>
                 <Text className="text-sm pb-2 leading-5 font-medium text-slate-500">
-                    An OTP has been sent to the phone number +9191********34 in the form of SMS. Please the OTP below :
+                    An OTP has been sent to the phone number +9191********34 in the form of SMS. Please enter the OTP below :
                 </Text>
             </View>
             <View className="h-1/6 flex-row items-center justify-around w-full p-4">
