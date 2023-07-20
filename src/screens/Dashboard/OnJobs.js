@@ -108,7 +108,7 @@ export default function OnJobs() {
                     <Text className='font-semibold'>
                         GST (18%)
                     </Text>
-                    <Text className='font-semibold line-through'>
+                    <Text className='font-semibold'>
                         <FontAwesome name="rupee" size={12} color="black" /> 144.77
                     </Text>
                 </View>
