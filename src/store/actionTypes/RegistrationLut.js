@@ -6,7 +6,7 @@ const FormData = global.FormData;
 
 export const GetRegistrationLut = () => async (dispatch) => {
   try {
-    const res = await axios({
+    const resp = await axios({
       method: "GET",
       url:
         BASE_URL +
@@ -18,10 +18,10 @@ export const GetRegistrationLut = () => async (dispatch) => {
       },
       // body: formdata,
     });
-    if (res.data) {
+    if (resp.data) {
       dispatch({
         type: actionTypes.STUDENTPROGRAMSLUT,
-        payload: res.data,
+        payload: resp.data,
       });
     }
   } catch (error) {
@@ -32,7 +32,7 @@ export const GetRegistrationLut = () => async (dispatch) => {
 export const ValidateReferalCode = (action) => async (dispatch) => {
   console.log(action, "CODE");
   try {
-    const res = await axios({
+    const resp = await axios({
       method: "GET",
       url: BASE_URL + `/o/validateRefCode/${action.code}`,
       //data: formData, //'emphone','pass','submit
@@ -42,13 +42,13 @@ export const ValidateReferalCode = (action) => async (dispatch) => {
       },
       // body: formdata,
     });
-    if (res.data) {
-      console.log(res.data, "REFCODE");
+    if (resp.data) {
+      console.log(resp.data, "REFCODE");
       dispatch({
         type: actionTypes.STUDENTREFCODERESP,
-        payload: res.data,
+        payload: resp.data,
       });
-      action.callback(res.data);
+      action.callback(resp.data);
     }
   } catch (error) {
     console.log(error, "ERR");
@@ -85,9 +85,9 @@ export const StudentRegistrationDataPost = (action) => async (dispatch) => {
   }
   console.log(formData, "API");
   try {
-    const res = await axios({
+    const resp = await axios({
       method: "POST",
-      url: `https://devapi.c2hire.com/api/o/signUp/Student`,
+      url: BASE_URL + `/o/signUp/Student`,
       data: formData, //'emphone','pass','submit
       headers: {
         Accept: "multipart/form-data",
@@ -95,13 +95,51 @@ export const StudentRegistrationDataPost = (action) => async (dispatch) => {
       },
       //body: formData,
     });
-    if (res.data) {
-      console.log(res.data, "RESPONSE");
+    if (resp.data) {
+      console.log(resp.data, "RESPONSE");
       dispatch({
-        type: actionTypes.STUDENTREGDATAPOST,
-        payload: res.data,
+        type: actionTypes.STUDENTREGDATAPOSTSUCCESS,
+        payload: resp.data,
       });
-      action.callback(res.data);
+      action.callback(resp.data);
+    }
+  } catch (err) {
+    if (err.response) {
+      console.log(err.response.data.errors[0].message);
+    } else {
+      console.log("Something Wrong!", err.message);
+    }
+  }
+};
+
+export const SendMobileOTP = (action) => async (dispatch) => {
+  const model = action.apiPayloadRequest;
+  const URL = "/o/verifyOTP";
+  let formData = new FormData();
+  for (const key in model) {
+    formData.append(key, model[key]);
+  }
+  try {
+    const resp = await axios({
+      method: "POST",
+      url: BASE_URL + `/o/verifyOTP`,
+      data: formData, //'emphone','pass','submit
+      headers: {
+        Accept: "multipart/form-data",
+        "Content-Type": "multipart/form-data",
+      },
+      //body: formData,
+    });
+    if (resp.MobileVerified) {
+      dispatch({
+        type: actionTypes.OTPVERIFIEDDATA,
+        payload: resp.data,
+      });
+      action.callback(resp);
+    } else {
+      if (!resp.MobileVerified) {
+        console.log("Worng OTP Try again");
+      }
     }
   } catch (err) {
     if (err.response) {

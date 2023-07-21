@@ -42,12 +42,6 @@ export default function Registration({ navigation }) {
     dispatch(GetRegistrationLut());
   }, []);
 
-  useEffect(() => {
-    if (refCoderesp) {
-      console.log(refCoderesp, "REFdone");
-    }
-  }, [refCoderesp]);
-
   const backtoHome = () => {
     navigation.navigate("Home");
   };
@@ -58,7 +52,11 @@ export default function Registration({ navigation }) {
     { key: "3", value: "Other" },
   ];
 
-  useEffect(() => {}, [pursuing]);
+  useEffect(() => {
+    if (refCoderesp !== null) {
+      onSuccesssubmitRegForm(refCoderesp);
+    }
+  }, [refCoderesp]);
 
   const termsShow = () => {};
 
@@ -620,6 +618,7 @@ export default function Registration({ navigation }) {
                 <TouchableOpacity
                   className="p-4 mb-3 ml-1 mr-1 rounded"
                   style={Styles.loginBtn}
+                  onPress={backtoHome}
                 >
                   <Text className="text-lg font-bold text-center text-white">
                     Back
@@ -629,7 +628,7 @@ export default function Registration({ navigation }) {
                   className="p-4 mb-3 ml-1 mr-1 rounded"
                   style={Styles.loginBtn}
                   disabled={!isValid && !terms}
-                  onPress={handleSubmit}
+                  onPress={handleSubmit} // here we have used formik for validation use formik handleSubmit function
                 >
                   <Text className="text-lg font-bold text-center text-white">
                     Next
