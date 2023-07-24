@@ -3,8 +3,10 @@ import * as actionTypes from "../actions";
 import axios from "axios";
 import { BASE_URL } from "@env";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { APIStatus } from "./actionTypes";
 
 export const actionLoginRequest = (model) => async (dispatch) => {
+  dispatch(APIStatus(true));
   let formData = new FormData();
   formData.append("stakeholder", model.stakeholder);
   formData.append("userID", model.userID);
@@ -27,7 +29,9 @@ export const actionLoginRequest = (model) => async (dispatch) => {
       });
       AsyncStorage.setItem("token", res.data.token);
     }
+    dispatch(APIStatus(false));
   } catch (error) {
     console.log(error, "ERR");
+    dispatch(APIStatus(false));
   }
 };

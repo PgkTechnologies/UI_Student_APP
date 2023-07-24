@@ -139,7 +139,7 @@ export default function Registration({ navigation }) {
     values.universityName = univName;
     values.collegeName = collName;
     values.programName = proName;
-    values.branName = branName;
+    values.branchName = branName;
     values.dateOfBirth = new Date(dateOfBirth).toISOString();
     values.phoneNumber =
       phoneNumber.substring(0, 3) === "+91" ? phoneNumber : "+91" + phoneNumber;

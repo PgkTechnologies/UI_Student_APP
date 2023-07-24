@@ -44,7 +44,8 @@ console.log(BASE_URL, "AXIOS");
 instance.interceptors.request.use(
   (config) => {
     const accessToken = GetTokenData();
-    console.log(accessToken, "TOLEN");
+
+    console.log(accessToken, "TOKEN");
     if (
       accessToken &&
       config.url.includes !==

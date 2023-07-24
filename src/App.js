@@ -9,7 +9,7 @@ import { Styles } from "./assets/css/style";
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./store/reducers";
 import thunk from "redux-thunk";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 function App() {

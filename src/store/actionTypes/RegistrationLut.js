@@ -3,6 +3,7 @@ import * as actionTypes from "../actions";
 import { BASE_URL } from "@env";
 import instance from "../../utils/Axios";
 const FormData = global.FormData;
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const GetRegistrationLut = () => async (dispatch) => {
   try {
@@ -93,7 +94,6 @@ export const StudentRegistrationDataPost = (action) => async (dispatch) => {
         Accept: "multipart/form-data",
         "Content-Type": "multipart/form-data",
       },
-      //body: formData,
     });
     if (resp.data) {
       console.log(resp.data, "RESPONSE");
@@ -120,17 +120,18 @@ export const SendMobileOTP = (action) => async (dispatch) => {
     formData.append(key, model[key]);
   }
   try {
-    const resp = await axios({
+    const res = await axios({
       method: "POST",
-      url: BASE_URL + `/o/verifyOTP`,
+      url: BASE_URL + URL,
       data: formData, //'emphone','pass','submit
       headers: {
         Accept: "multipart/form-data",
         "Content-Type": "multipart/form-data",
       },
-      //body: formData,
     });
+    const resp = res.data;
     if (resp.MobileVerified) {
+      await AsyncStorage.setItem("tokenreg", resp.token);
       dispatch({
         type: actionTypes.OTPVERIFIEDDATA,
         payload: resp.data,
@@ -147,5 +148,32 @@ export const SendMobileOTP = (action) => async (dispatch) => {
     } else {
       console.log("Something Wrong!", err.message);
     }
+  }
+};
+
+export const GetRegistrationAmount = () => async (dispatch) => {
+  const URL = "/pg/regFee";
+  const formData = new FormData();
+  const token = await AsyncStorage.getItem("tokenreg");
+  console.log(token, "PAYMRNTDIS");
+  try {
+    const resp = await axios({
+      method: "GET",
+      url: BASE_URL + "/pg/regFee",
+      //data: formData, //'emphone','pass','submit
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json, text/plain, /",
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    if (resp.data) {
+      dispatch({
+        type: actionTypes.FINAL_REG_FEE_AMOUNT,
+        payload: resp.data,
+      });
+    }
+  } catch (error) {
+    console.log(error, "ERR");
   }
 };

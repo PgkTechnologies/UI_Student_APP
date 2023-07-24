@@ -1,11 +1,20 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Styles, Sytles } from "../../assets/css/style";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Home({ navigation }) {
   const submitButton = () => {
     navigation.navigate("Login");
   };
+
+  const getTokenReg = async () => {
+    return await AsyncStorage.getItem("tokenreg");
+  };
+
+  useEffect(() => {
+    console.log(getTokenReg(), "TT");
+  }, []);
   return (
     <View className="h-full w-full bg-white">
       <View className="bg-slate-300 h-3/5 w-full"></View>
