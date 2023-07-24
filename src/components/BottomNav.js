@@ -23,7 +23,7 @@ export default function BottomNav(props) {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 65,
+          height: 60,
           borderTopStartRadius: 16,
           borderTopEndRadius: 16,
           backgroundColor: "#001a33",

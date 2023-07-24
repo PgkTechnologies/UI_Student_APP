@@ -5,20 +5,48 @@ export const Styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight,
   },
+  addIcon: {
+    position: 'absolute',
+    top: 10,
+    right: 42
+  },
   container: {
     flex: 1,
     backgroundColor: "#FFF",
     alignItems: "center",
     justifyContent: "center",
   },
+  editContainer: {
+    position: 'relative'
+  },
+  editIcon: {
+    position: 'absolute',
+    top: 15,
+    right: 12
+  },
   flex: {
     flex: 1,
+  },
+  flexBtw: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+
+  },
+  flexCol: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   whiteText: {
     color: "#FFFFFF",
   },
   darkText: {
     color: "#444444",
+  },
+  greenText: {
+    color: "#009973",
   },
   loginBtn: {
     color: "#FFFFFF",
@@ -31,6 +59,16 @@ export const Styles = StyleSheet.create({
   selectField: {
     borderRadius: "5px",
     borderColor: "none",
+  },
+  smBtn: {
+    color: "#FFFFFF",
+    backgroundColor: "#009973",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 18,
+    paddingRight: 18,
+    borderRadius: 5,
+    fontWeight: "500"
   },
   calendar: {
     flex: 1,
