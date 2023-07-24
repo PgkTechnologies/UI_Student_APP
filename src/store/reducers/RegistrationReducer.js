@@ -6,6 +6,7 @@ const INITIAL = {
   regData: null,
   otpVerified: null,
   regFee: null,
+  orderID: null,
 };
 
 const RegistrationReducer = (state = INITIAL, action) => {
@@ -19,6 +20,8 @@ const RegistrationReducer = (state = INITIAL, action) => {
     case actionTypes.OTPVERIFIEDDATA:
       return { ...state, otpVerified: action.payload };
     case actionTypes.FINAL_REG_FEE_AMOUNT:
+      return { ...state, regFee: action.payload };
+    case actionTypes.PAYMENTOEDERID:
       return { ...state, regFee: action.payload };
     default:
       return state;

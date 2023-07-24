@@ -177,3 +177,41 @@ export const GetRegistrationAmount = () => async (dispatch) => {
     console.log(error, "ERR");
   }
 };
+
+export const CreatePaymentRequest = (action) => async (dispatch) => {
+  const model = action.apiPayloadRequest;
+  let formData = new FormData();
+  for (const key in model) {
+    formData.append(key, model[key]);
+  }
+  const URL = "/pg/createPayment";
+  const token = await AsyncStorage.getItem("tokenreg");
+
+  try {
+    const res = await axios({
+      method: "POST",
+      url: BASE_URL + URL,
+      data: formData, //'emphone','pass','submit
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json, text/plain, /",
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    if (res) {
+      let resp = res.data;
+      console.log(resp, "ORDERs");
+      dispatch({
+        type: actionTypes.PAYMENTOEDERID,
+        payload: resp,
+      });
+      action.callback(resp);
+    }
+  } catch (error) {
+    if (error.response) {
+      console.warn(error.response.data);
+    } else {
+      console.log("Something Wrong!", error.message);
+    }
+  }
+};

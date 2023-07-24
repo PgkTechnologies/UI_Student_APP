@@ -25,7 +25,6 @@ const StackNav = () => {
     >
       {!token ? (
         <>
-          {api ? <Stack.Screen name="Preloader" component={PreLoader} /> : null}
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Registration" component={Registration} />
