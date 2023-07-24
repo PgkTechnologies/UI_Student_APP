@@ -14,7 +14,7 @@ export default function OffJobs() {
                     source={require("../../../assets/6310507.jpg")}
                 />
             </View>
-            <View className="h-2/6 flex-col justify-center items-center">
+            <View className="h-2/6 flex-col justify-end items-center">
                 <Text className="text-2xl mb-5 font-black text-green-700 text-center">
                     Congrats!
                 </Text>
