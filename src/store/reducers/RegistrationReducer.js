@@ -4,6 +4,8 @@ const INITIAL = {
   lutData: [],
   refCode: null,
   regData: null,
+  otpVerified: null,
+  regFee: null,
 };
 
 const RegistrationReducer = (state = INITIAL, action) => {
@@ -12,8 +14,12 @@ const RegistrationReducer = (state = INITIAL, action) => {
       return { ...state, lutData: action.payload };
     case actionTypes.STUDENTREFCODERESP:
       return { ...state, refCode: action.payload };
-    case actionTypes.STUDENTREFCODERESP:
-      return { ...state, regData: action.payload };
+    case actionTypes.STUDENTREGDATAPOSTSUCCESS:
+      return { ...state, regSuccessData: action.payload };
+    case actionTypes.OTPVERIFIEDDATA:
+      return { ...state, otpVerified: action.payload };
+    case actionTypes.FINAL_REG_FEE_AMOUNT:
+      return { ...state, regFee: action.payload };
     default:
       return state;
   }

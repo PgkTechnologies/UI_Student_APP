@@ -3,10 +3,11 @@ import * as actionTypes from "../actions";
 import { BASE_URL } from "@env";
 import instance from "../../utils/Axios";
 const FormData = global.FormData;
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const GetRegistrationLut = () => async (dispatch) => {
   try {
-    const res = await axios({
+    const resp = await axios({
       method: "GET",
       url:
         BASE_URL +
@@ -18,10 +19,10 @@ export const GetRegistrationLut = () => async (dispatch) => {
       },
       // body: formdata,
     });
-    if (res.data) {
+    if (resp.data) {
       dispatch({
         type: actionTypes.STUDENTPROGRAMSLUT,
-        payload: res.data,
+        payload: resp.data,
       });
     }
   } catch (error) {
@@ -32,7 +33,7 @@ export const GetRegistrationLut = () => async (dispatch) => {
 export const ValidateReferalCode = (action) => async (dispatch) => {
   console.log(action, "CODE");
   try {
-    const res = await axios({
+    const resp = await axios({
       method: "GET",
       url: BASE_URL + `/o/validateRefCode/${action.code}`,
       //data: formData, //'emphone','pass','submit
@@ -42,13 +43,13 @@ export const ValidateReferalCode = (action) => async (dispatch) => {
       },
       // body: formdata,
     });
-    if (res.data) {
-      console.log(res.data, "REFCODE");
+    if (resp.data) {
+      console.log(resp.data, "REFCODE");
       dispatch({
         type: actionTypes.STUDENTREFCODERESP,
-        payload: res.data,
+        payload: resp.data,
       });
-      action.callback(res.data);
+      action.callback(resp.data);
     }
   } catch (error) {
     console.log(error, "ERR");
@@ -85,23 +86,22 @@ export const StudentRegistrationDataPost = (action) => async (dispatch) => {
   }
   console.log(formData, "API");
   try {
-    const res = await axios({
+    const resp = await axios({
       method: "POST",
-      url: `https://devapi.c2hire.com/api/o/signUp/Student`,
+      url: BASE_URL + `/o/signUp/Student`,
       data: formData, //'emphone','pass','submit
       headers: {
         Accept: "multipart/form-data",
         "Content-Type": "multipart/form-data",
       },
-      //body: formData,
     });
-    if (res.data) {
-      console.log(res.data, "RESPONSE");
+    if (resp.data) {
+      console.log(resp.data, "RESPONSE");
       dispatch({
-        type: actionTypes.STUDENTREGDATAPOST,
-        payload: res.data,
+        type: actionTypes.STUDENTREGDATAPOSTSUCCESS,
+        payload: resp.data,
       });
-      action.callback(res.data);
+      action.callback(resp.data);
     }
   } catch (err) {
     if (err.response) {
@@ -109,5 +109,71 @@ export const StudentRegistrationDataPost = (action) => async (dispatch) => {
     } else {
       console.log("Something Wrong!", err.message);
     }
+  }
+};
+
+export const SendMobileOTP = (action) => async (dispatch) => {
+  const model = action.apiPayloadRequest;
+  const URL = "/o/verifyOTP";
+  let formData = new FormData();
+  for (const key in model) {
+    formData.append(key, model[key]);
+  }
+  try {
+    const res = await axios({
+      method: "POST",
+      url: BASE_URL + URL,
+      data: formData, //'emphone','pass','submit
+      headers: {
+        Accept: "multipart/form-data",
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    const resp = res.data;
+    if (resp.MobileVerified) {
+      await AsyncStorage.setItem("tokenreg", resp.token);
+      dispatch({
+        type: actionTypes.OTPVERIFIEDDATA,
+        payload: resp.data,
+      });
+      action.callback(resp);
+    } else {
+      if (!resp.MobileVerified) {
+        console.log("Worng OTP Try again");
+      }
+    }
+  } catch (err) {
+    if (err.response) {
+      console.log(err.response.data.errors[0].message);
+    } else {
+      console.log("Something Wrong!", err.message);
+    }
+  }
+};
+
+export const GetRegistrationAmount = () => async (dispatch) => {
+  const URL = "/pg/regFee";
+  const formData = new FormData();
+  const token = await AsyncStorage.getItem("tokenreg");
+  console.log(token, "PAYMRNTDIS");
+  try {
+    const resp = await axios({
+      method: "GET",
+      url: BASE_URL + "/pg/regFee",
+      //data: formData, //'emphone','pass','submit
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json, text/plain, /",
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    if (resp.data) {
+      dispatch({
+        type: actionTypes.FINAL_REG_FEE_AMOUNT,
+        payload: resp.data,
+      });
+    }
+  } catch (error) {
+    console.log(error, "ERR");
   }
 };

@@ -6,9 +6,13 @@ import Dashboard from "../Dashboard/Dashboard";
 import { useSelector } from "react-redux";
 import Registration from "./Registration";
 import OTP from "./Otp";
+import Regsuccess from "./Regsuccess";
+import Payment from "./Payment";
+import PreLoader from "../../utils/PreLoader";
 
 const Stack = createNativeStackNavigator();
 const StackNav = () => {
+  const api = useSelector((state) => state.loginReducer.apiStatus);
   const { token } = useAuth();
   console.log(token, "HOME");
   const loginData = useSelector((state) => state.loginReducer.token);
@@ -21,13 +25,18 @@ const StackNav = () => {
     >
       {!token ? (
         <>
+          {api ? <Stack.Screen name="Preloader" component={PreLoader} /> : null}
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Registration" component={Registration} />
           <Stack.Screen name="OTP" component={OTP} />
+          <Stack.Screen name="Success" component={Regsuccess} />
+          <Stack.Screen name="Payment" component={Payment} />
         </>
       ) : (
-        <Stack.Screen name="Dashboard" component={Dashboard} />
+        <>
+          <Stack.Screen name="Dashboard" component={Dashboard} />
+        </>
       )}
     </Stack.Navigator>
   );
