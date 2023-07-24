@@ -23,12 +23,9 @@ export default function BottomNav(props) {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          position: "absolute",
-          left: 20,
-          right: 20,
-          bottom: 25,
           height: 65,
-          borderRadius: 16,
+          borderTopStartRadius: 16,
+          borderTopEndRadius: 16,
           backgroundColor: "#001a33",
           ...Styles.shadowProp,
         },
