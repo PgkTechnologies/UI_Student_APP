@@ -67,7 +67,7 @@ export const Styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 18,
     paddingRight: 18,
-    borderRadius: 5,
+    borderRadius: 24,
     fontWeight: "500"
   },
   calendar: {

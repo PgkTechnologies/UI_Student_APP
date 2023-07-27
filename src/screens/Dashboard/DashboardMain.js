@@ -25,27 +25,30 @@ export default function DashboardMain(props) {
   return (
     <View className="h-full">
       <View className="p-3 flex-row items-center justify-between border-b border-slate-200 bg-white">
-        <TouchableOpacity onPress={handleMenu}>
-          <Ionicons name="menu" size={32} color="black" />
-        </TouchableOpacity>
         <View className="w-8/12">
-          <Text className="ml-5 text-3xl font-black text-blue-800">
+          <Text className="ml-2 text-3xl font-black text-blue-800">
             C2Hire.
           </Text>
         </View>
-        <TouchableOpacity
-          className="flex-auto"
-          onPress={() => setSearchModal(true)}
-        >
-          <View className="h-10 w-10 flex justify-center items-center">
-            <FontAwesome5 name="search" size={22} color="black" />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setNotificationModal(true)}>
-          <View className="h-10 w-10 flex justify-center items-center">
-            <MaterialCommunityIcons name="bell" size={26} color="black" />
-          </View>
-        </TouchableOpacity>
+        <View className="w-4/12 flex-row justify-between items-center">
+          <TouchableOpacity
+            onPress={() => setSearchModal(true)}
+          >
+            <View className="flex justify-center items-center">
+              <FontAwesome5 name="search" size={22} color="black" />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setNotificationModal(true)}>
+            <View className="flex justify-center items-center">
+              <MaterialCommunityIcons name="bell" size={24} color="black" />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleMenu}>
+            <View className="flex justify-center items-center">
+              <Ionicons name="menu" size={28} color="black" />
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
       <ScrollView className="p-3 pb-24 bg-white ">
         <Modal

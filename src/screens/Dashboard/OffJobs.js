@@ -41,7 +41,7 @@ export default function OffJobs() {
                 //onPress={handleSubmit}
                 >
                     <Text className="text-lg font-bold text-center text-white">
-                        Payments
+                        Pay Registration Free
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity

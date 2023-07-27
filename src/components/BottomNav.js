@@ -1,7 +1,7 @@
 import { View, Text, Button } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Profile from "../screens/Dashboard/Profile";
+import Profile from "../screens/Profile/Profile";
 import DashboardMain from "../screens/Dashboard/DashboardMain";
 import OnJobs from "../screens/Dashboard/OnJobs";
 import OffJobs from "../screens/Dashboard/OffJobs";
@@ -24,8 +24,6 @@ export default function BottomNav(props) {
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 60,
-          borderTopStartRadius: 16,
-          borderTopEndRadius: 16,
           backgroundColor: "#001a33",
           ...Styles.shadowProp,
         },
@@ -39,8 +37,8 @@ export default function BottomNav(props) {
           tabBarIcon: ({ focused }) => (
             <MaterialIcons
               name="dashboard"
-              size={focused ? 32 : 24}
-              color={focused ? "#33d6ff" : "white"}
+              size={28}
+              color={focused ? "#0091ff" : "white"}
             />
           ),
         }}
@@ -53,8 +51,8 @@ export default function BottomNav(props) {
           tabBarIcon: ({ focused }) => (
             <Entypo
               name="message"
-              size={focused ? 32 : 24}
-              color={focused ? "#33d6ff" : "white"}
+              size={28}
+              color={focused ? "#0091ff" : "white"}
             />
           ),
         }}
@@ -66,8 +64,8 @@ export default function BottomNav(props) {
           tabBarIcon: ({ focused }) => (
             <FontAwesome5
               name="graduation-cap"
-              size={focused ? 28 : 24}
-              color={focused ? "#33d6ff" : "white"}
+              size={26}
+              color={focused ? "#0091ff" : "white"}
             />
           ),
         }}
@@ -79,8 +77,8 @@ export default function BottomNav(props) {
           tabBarIcon: ({ focused }) => (
             <FontAwesome
               name="briefcase"
-              size={focused ? 28 : 24}
-              color={focused ? "#33d6ff" : "white"}
+              size={26}
+              color={focused ? "#0091ff" : "white"}
             />
           ),
         }}
@@ -90,11 +88,8 @@ export default function BottomNav(props) {
         component={Profile}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name="person"
-              size={focused ? 28 : 24}
-              color={focused ? "#33d6ff" : "white"}
-            />
+            <View className="w-7 h-7 rounded-full" style={{ backgroundColor: focused ? "#0091ff" : 'white' }}>
+            </View>
           ),
         }}
       />
